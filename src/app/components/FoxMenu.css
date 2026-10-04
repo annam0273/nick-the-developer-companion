@@ -1,0 +1,114 @@
+.mochi-fox-menu {
+  position: absolute;
+  bottom: 0px; 
+  right: -10px; /* Prevent clipping off the screen edge */
+  width: 320px;
+  height: 90px;
+  z-index: 1000;
+  
+  /* Smooth slide up transition */
+  animation: mochi-board-slide-up 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes mochi-board-slide-up {
+  0% { transform: translateY(50px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.mochi-board-content {
+  background: #FFF3E3;
+  border: 4px solid #3C2B25;
+  border-radius: 12px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 4px 6px 0px #3C2B25; /* Chunky drop shadow */
+  position: relative;
+  z-index: 2;
+  padding: 10px; /* Ensure content doesn't hit borders */
+}
+
+/* Paws hanging over the top edge */
+.mochi-board-paw {
+  position: absolute;
+  top: -8px;
+  width: 24px;
+  height: 14px;
+  background: #3C2B25; /* Match character paw color */
+  border-radius: 12px;
+  z-index: 3;
+}
+
+/* Positioned relative to the right edge to stay centered on the fox */
+.mochi-board-paw.paw-left {
+  right: 120px;
+  transform: rotate(-10deg);
+}
+
+.mochi-board-paw.paw-right {
+  right: 60px;
+  transform: rotate(10deg);
+}
+
+.mochi-fox-menu-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.mochi-fox-menu-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.mochi-fox-menu-icons button {
+  background: #FDF4E3;
+  border: 2px solid #3C2B25;
+  border-radius: 8px;
+  padding: 6px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.1s ease-in-out;
+  box-shadow: 2px 2px 0px #3C2B25;
+}
+
+.mochi-fox-menu-icons button svg {
+  color: #3C2B25; 
+  transition: transform 0.1s;
+}
+
+.mochi-fox-menu-icons button:hover {
+  background: #E07A3F;
+  transform: translateY(-2px);
+  box-shadow: 2px 4px 0px #3C2B25;
+}
+
+.mochi-fox-menu-icons button:hover svg {
+  color: #FFF3E3;
+  transform: scale(1.1);
+}
+
+.mochi-fox-menu-icons button:active {
+  transform: translateY(2px);
+  box-shadow: 0px 0px 0px #3C2B25;
+}
+
+.mochi-fox-menu-label {
+  font-size: 14px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-weight: bold;
+  color: #3C2B25;
+  text-align: center;
+  height: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}

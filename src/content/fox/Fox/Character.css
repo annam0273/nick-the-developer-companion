@@ -1,0 +1,516 @@
+/* 
+  Scoped CSS for the character. 
+  Using a unique class name prefix to prevent clashes with the host webpage.
+*/
+
+.mochi-companion-container {
+  /* Establish positioning context for absolute children like the speech bubble */
+  position: relative;
+  
+  /* Set a fixed size for the character so it doesn't blow up */
+  width: 150px;
+  height: 150px;
+  
+  /* Prevent text selection on the character */
+  user-select: none;
+  
+  /* Ensure it has a crisp cursor and registers clicks */
+  cursor: pointer;
+  pointer-events: auto;
+  
+  /* Move it slightly away from the absolute right edge */
+  margin-right: 20px;
+}
+
+.mochi-flipper {
+  width: 100%;
+  height: 100%;
+}
+
+.mochi-svg {
+  width: 100%;
+  height: 100%;
+  /* Ensures the SVG doesn't get squished */
+  display: block;
+  /* Prevent any edges from clipping when bouncing or rotating */
+  overflow: visible;
+}
+
+/* --- IDLE STATE --- */
+
+.mochi-svg {
+  /* Constant gentle breathing effect */
+  animation: mochi-breathe 4s infinite ease-in-out;
+}
+
+@keyframes mochi-breathe {
+  0%, 100% { transform: scaleY(1) scaleX(1); }
+  50% { transform: scaleY(1.02) scaleX(0.98); }
+}
+
+.mochi-svg #tail {
+  /* Slow, lazy wag */
+  transform-origin: 35px 75px;
+  animation: mochi-tail-wag 3s infinite ease-in-out;
+  transition: transform 0.3s ease;
+}
+
+@keyframes mochi-tail-wag {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(8deg); }
+}
+
+.mochi-eyes-blink {
+  animation: mochi-blink 0.15s;
+}
+
+@keyframes mochi-blink {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.1); }
+}
+
+.mochi-svg #eyes-group {
+  /* Ensure transform applies from center of the eyes */
+  transform-origin: 45px 32px;
+  transition: transform 0.3s ease;
+}
+
+.mochi-svg #head {
+  transition: transform 0.3s ease;
+}
+
+.mochi-svg #ear-left, .mochi-svg #ear-right {
+  transition: transform 0.3s ease;
+}
+.mochi-svg #ear-left { transform-origin: 20px 20px; }
+.mochi-svg #ear-right { transform-origin: 70px 20px; }
+
+
+/* --- HOVER STATE (CURIOUS) --- */
+
+.mochi-svg.mochi-curious {
+  animation: none;
+  /* Slight tilt to look interested */
+  transform: rotate(5deg) scale(1.05);
+}
+
+.mochi-svg.mochi-curious #head {
+  /* Slight head tilt */
+  transform-origin: 45px 35px;
+  transform: rotate(6deg);
+}
+
+.mochi-svg.mochi-curious #eyes-group {
+  /* Eyes shift towards cursor */
+  transform: translateX(2px) translateY(-1px);
+}
+
+.mochi-svg.mochi-curious #ear-left {
+  transform: rotate(-10deg);
+}
+
+.mochi-svg.mochi-curious #ear-right {
+  transform: rotate(10deg);
+}
+
+.mochi-svg.mochi-curious #tail {
+  /* Pause the wag and hold tail up slightly */
+  animation: none;
+  transform: rotate(15deg);
+}
+
+/* --- HAPPY STATE (CLICK) --- */
+
+.mochi-svg.mochi-happy {
+  /* Overrides mochi-breathe during the happy state */
+  animation: mochi-bounce 0.6s cubic-bezier(0.28, 0.84, 0.42, 1);
+}
+
+@keyframes mochi-bounce {
+  0%, 100% { transform: translateY(0) scaleY(1); }
+  30% { transform: translateY(-15px) scaleY(1.05); }
+  50% { transform: translateY(0) scaleY(0.9); }
+  70% { transform: translateY(-5px) scaleY(1.02); }
+  85% { transform: translateY(0) scaleY(0.98); }
+}
+
+.mochi-svg.mochi-happy #tail {
+  /* Wag tail very fast */
+  animation: mochi-tail-wag-fast 0.15s ease-in-out infinite;
+}
+
+@keyframes mochi-tail-wag-fast {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(20deg); }
+}
+
+/* --- SKETCHING STATE --- */
+.mochi-svg.mochi-sketching {
+  animation: mochi-sketch 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes mochi-sketch {
+  0% { transform: translateY(0) rotate(-2deg); }
+  100% { transform: translateY(-3px) rotate(2deg); }
+}
+
+.mochi-svg.mochi-sketching #tail {
+  animation: mochi-tail-wag-fast 0.3s ease-in-out infinite;
+}
+
+/* --- COMPRESSING STATE --- */
+.mochi-svg.mochi-compressing {
+  animation: mochi-compress 0.8s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
+}
+
+@keyframes mochi-compress {
+  0%, 100% { transform: translateY(0) scaleY(1); }
+  50% { transform: translateY(-15px) scaleY(1.05); } /* jump up */
+}
+
+.mochi-svg.mochi-compressing #tail {
+  animation: mochi-tail-wag-fast 0.2s ease-in-out infinite;
+}
+
+/* --- SCRIBING STATE --- */
+.mochi-svg.mochi-scribing {
+  animation: mochi-scribe-nod 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes mochi-scribe-nod {
+  0% { transform: translateY(0) rotate(0deg); }
+  30% { transform: translateY(3px) rotate(-3deg); } /* nod down left */
+  70% { transform: translateY(-2px) rotate(2deg); } /* look up right thoughtful */
+  100% { transform: translateY(3px) rotate(0deg); } /* nod down center */
+}
+
+.mochi-svg.mochi-scribing #tail {
+  /* thoughtful, slow tail wags */
+  animation: mochi-tail-wag-slow 2s ease-in-out infinite;
+}
+
+@keyframes mochi-tail-wag-slow {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(15deg); }
+}
+
+/* --- SPEECH BUBBLE --- */
+
+.mochi-comic-cloud-wrapper {
+  position: absolute;
+  top: -60px;
+  right: 100px; /* Perfect sweet spot between distant and overlapping */
+  pointer-events: none;
+  z-index: 10;
+  animation: mochi-pop-in 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  
+  /* Outline the entire cloud composite */
+  filter: 
+    drop-shadow(2px 0px 0px #333) 
+    drop-shadow(-2px 0px 0px #333) 
+    drop-shadow(0px 2px 0px #333) 
+    drop-shadow(0px -2px 0px #333)
+    drop-shadow(4px 4px 0px rgba(0,0,0,0.15));
+}
+
+.mochi-comic-cloud-base {
+  position: relative;
+  background: white;
+  border-radius: 20px;
+  padding: 10px 15px;
+  min-width: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mochi-speech-content {
+  position: relative;
+  z-index: 1;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  white-space: pre-wrap;
+}
+
+/* Add fluffy cloud bumps around the perimeter */
+.mochi-cloud-bump {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.bump1 { width: 30px; height: 30px; top: -10px; left: 10px; }
+.bump2 { width: 45px; height: 45px; top: -20px; left: calc(50% - 22px); }
+.bump3 { width: 35px; height: 35px; top: -15px; right: 10px; }
+.bump4 { width: 25px; height: 25px; bottom: -10px; left: 10px; }
+.bump5 { width: 35px; height: 35px; bottom: -15px; right: calc(50% - 17px); }
+.bump6 { width: 25px; height: 25px; bottom: -8px; right: 10px; }
+
+/* The little circles connecting the thought cloud to the fox */
+.mochi-cloud-tail1 {
+  position: absolute;
+  background: white;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  bottom: -15px;
+  right: -10px;
+  z-index: -1;
+}
+.mochi-cloud-tail2 {
+  position: absolute;
+  background: white;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  bottom: -25px;
+  right: -25px;
+  z-index: -1;
+}
+
+@keyframes mochi-pop-in {
+  0% { opacity: 0; transform: scale(0.5) translateY(10px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.mochi-listening-bubble {
+  color: #118AB2;
+  white-space: nowrap;
+  pointer-events: auto; /* allow clicking to stop */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  filter: 
+    drop-shadow(2px 0px 0px #118AB2) 
+    drop-shadow(-2px 0px 0px #118AB2) 
+    drop-shadow(0px 2px 0px #118AB2) 
+    drop-shadow(0px -2px 0px #118AB2)
+    drop-shadow(4px 4px 0px rgba(17,138,178,0.15));
+}
+
+.mochi-mic-icon {
+  animation: mochi-mic-pulse 1s infinite alternate;
+}
+
+@keyframes mochi-mic-pulse {
+  from { opacity: 0.5; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1.1); }
+}
+
+.mochi-companion-bubble {
+  color: #E07A3F;
+  white-space: pre-wrap;
+  max-width: 150px;
+  text-align: center;
+  filter: 
+    drop-shadow(2px 0px 0px #E07A3F) 
+    drop-shadow(-2px 0px 0px #E07A3F) 
+    drop-shadow(0px 2px 0px #E07A3F) 
+    drop-shadow(0px -2px 0px #E07A3F)
+    drop-shadow(4px 4px 0px rgba(224,122,63,0.15));
+}
+
+.mochi-error-bubble {
+  color: #EF476F;
+  filter: 
+    drop-shadow(2px 0px 0px #EF476F) 
+    drop-shadow(-2px 0px 0px #EF476F) 
+    drop-shadow(0px 2px 0px #EF476F) 
+    drop-shadow(0px -2px 0px #EF476F)
+    drop-shadow(4px 4px 0px rgba(239,71,111,0.15));
+}
+
+/* Teleporting animations removed in favor of CSS transitions in JSX */
+
+/* --- DRAGGING STATE --- */
+
+.mochi-dragging {
+  cursor: grabbing !important;
+}
+
+.mochi-svg.mochi-dragging {
+  /* Give it a slight "picked up" look */
+  transform: translateY(-5px) scaleY(1.02);
+}
+
+.mochi-svg.mochi-dragging #tail {
+  /* Tuck the tail *inward* (+15deg) so it stays safely within the SVG bounds! */
+  animation: none;
+  transform: rotate(15deg);
+}
+
+.mochi-svg.mochi-dragging #head {
+  /* Slight panic tilt */
+  transform-origin: 45px 35px;
+  transform: rotate(-5deg);
+}
+
+.mochi-svg.mochi-dragging #eyes-group {
+  /* Shift eyes */
+  transform: translateY(-1px);
+}
+
+/* --- ACCESSIBILITY --- */
+
+@media (prefers-reduced-motion: reduce) {
+  .mochi-svg,
+  #tail,
+  #head,
+  #eyes-group,
+  #ear-left,
+  #ear-right,
+  #paw-left,
+  #paw-right,
+  .mochi-svg.mochi-happy,
+  .mochi-svg.mochi-walking,
+  .mochi-speech-bubble {
+    animation: none !important;
+    transition: none !important;
+}
+}
+
+.mochi-sleep-bubble {
+  color: #698B43;
+  font-style: italic;
+  font-size: 11px;
+}
+
+/* --- EAR FLICK ANIMATION --- */
+
+.mochi-svg:not(.mochi-sleeping) #ear-left {
+  animation: ear-flick-left 8s infinite ease-in-out;
+}
+
+.mochi-svg:not(.mochi-sleeping) #ear-right {
+  animation: ear-flick-right 12s infinite ease-in-out;
+}
+
+@keyframes ear-flick-left {
+  0%, 90% { transform: rotate(0deg); }
+  92% { transform: rotate(-8deg); }
+  94% { transform: rotate(4deg); }
+  96% { transform: rotate(-2deg); }
+  98% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes ear-flick-right {
+  0%, 80% { transform: rotate(0deg); }
+  82% { transform: rotate(8deg); }
+  84% { transform: rotate(-4deg); }
+  86% { transform: rotate(2deg); }
+  88% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* --- SLEEPING STATE --- */
+
+.mochi-svg.mochi-sleeping {
+  /* Slow, deep breathing */
+  animation: mochi-sleep-breathe 6s infinite ease-in-out;
+}
+
+@keyframes mochi-sleep-breathe {
+  0%, 100% { transform: scaleY(1) scaleX(1); }
+  50% { transform: scaleY(1.03) scaleX(0.97); }
+}
+
+.mochi-svg.mochi-sleeping #tail {
+  /* Very slow tail wag */
+  animation: mochi-tail-wag 6s infinite ease-in-out;
+}
+
+.mochi-svg.mochi-sleeping #head {
+  /* Head drops slightly */
+  transform: translateY(2px) rotate(2deg);
+  transition: transform 1s ease-in-out;
+}
+
+/* --- SNIFFING / DIGGING STATE --- */
+
+.mochi-svg.mochi-sniffing {
+  /* Hops slightly while digging */
+  animation: mochi-digging-hop 0.4s infinite alternate ease-in-out;
+}
+
+@keyframes mochi-digging-hop {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-3px); }
+}
+
+.mochi-svg.mochi-sniffing #head {
+  /* Head pointed down at the ground */
+  transform-origin: 45px 35px;
+  transform: rotate(30deg) translateY(5px) translateX(2px);
+  animation: mochi-sniff 0.2s infinite alternate ease-in-out;
+}
+
+@keyframes mochi-sniff {
+  0% { transform: rotate(30deg) translateY(5px) translateX(2px); }
+  100% { transform: rotate(32deg) translateY(6px) translateX(3px); }
+}
+
+.mochi-svg.mochi-sniffing #tail {
+  /* Tail high up and wagging fast */
+  transform-origin: 35px 75px;
+  transform: rotate(-30deg);
+  animation: mochi-digging-tail 0.15s infinite alternate ease-in-out;
+}
+
+@keyframes mochi-digging-tail {
+  0% { transform: rotate(-30deg); }
+  100% { transform: rotate(-10deg); }
+}
+
+.mochi-svg.mochi-sniffing #eyes-group {
+  /* Looking intensely down */
+  transform: translateY(2px) translateX(1px);
+}
+
+/* --- DESIGNER CLOUD BUTTON --- */
+.mochi-designer-cloud-button {
+  position: absolute;
+  top: -60px;
+  right: 120px; /* Positioned on the left side of the fox */
+  background: white;
+  border-radius: 20px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  pointer-events: auto;
+  animation: mochi-pop-in 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  filter: 
+    drop-shadow(2px 0px 0px #E07A3F) 
+    drop-shadow(-2px 0px 0px #E07A3F) 
+    drop-shadow(0px 2px 0px #E07A3F) 
+    drop-shadow(0px -2px 0px #E07A3F)
+    drop-shadow(4px 4px 0px rgba(0,0,0,0.15));
+  transition: transform 0.2s;
+}
+
+.mochi-designer-cloud-button:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+.mochi-designer-cloud-button:active {
+  transform: translateY(2px) scale(0.95);
+}
+
+.mochi-cloud-text {
+  position: relative;
+  z-index: 1;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  color: #E07A3F;
+  text-align: center;
+  white-space: nowrap;
+}

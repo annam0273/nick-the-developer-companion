@@ -1,0 +1,22 @@
+.mochi-fox-corner {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row-reverse; /* Den on the right, Fox on the left */
+  align-items: flex-end;
+  justify-content: flex-end;
+  z-index: 2147483647;
+  cursor: grab;
+  user-select: none;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+
+.mochi-fox-corner.mochi-dragging {
+  cursor: grabbing;
+}
+
+.mochi-corner-fox {
+  z-index: 2; /* Ensure fox stays on top */
+}

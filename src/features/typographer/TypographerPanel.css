@@ -1,0 +1,330 @@
+.mochi-typographer-panel {
+  position: absolute;
+  bottom: 0px;
+  right: 120%;
+  width: 320px;
+  background: #FDF4E3;
+  border: 2px solid #3C2B25;
+  border-radius: 12px;
+  box-shadow: 4px 4px 0px rgba(60, 43, 37, 0.2);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  max-height: 60vh;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.mochi-typographer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 2px dashed #8C7A6B;
+  background: rgba(224, 122, 63, 0.1);
+  border-radius: 10px 10px 0 0;
+}
+
+.mochi-typographer-header h3 {
+  margin: 0;
+  color: #3C2B25;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.mochi-typographer-close {
+  background: #E07A3F !important;
+  border: 2px solid #3C2B25 !important;
+  border-radius: 50% !important;
+  width: 24px !important;
+  height: 24px !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  color: #FFF3E3 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  box-shadow: 2px 2px 0px #3C2B25 !important;
+  transition: all 0.1s;
+}
+
+.mochi-typographer-close:hover {
+  background: #C25A24 !important;
+}
+
+.mochi-typographer-close:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px #3C2B25 !important;
+}
+
+.mochi-typographer-content {
+  padding: 16px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.mochi-typographer-content::-webkit-scrollbar {
+  width: 6px;
+}
+.mochi-typographer-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+.mochi-typographer-content::-webkit-scrollbar-thumb {
+  background: #8C7A6B;
+  border-radius: 3px;
+}
+
+.mochi-typographer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mochi-typography-external-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(140, 122, 107, 0.05);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(140, 122, 107, 0.2);
+}
+
+.mochi-typography-external-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #8C7A6B;
+  text-transform: uppercase;
+}
+
+.mochi-designer-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.mochi-typography-external-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.mochi-typography-external-chip {
+  position: relative;
+  font-size: 11px;
+  font-weight: 700;
+  color: #E07A3F;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 4px;
+  border: 1px solid rgba(140, 122, 107, 0.2);
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.mochi-typography-external-chip:hover {
+  background: #fff;
+  border-color: #E07A3F;
+  transform: translateY(-1px);
+}
+.mochi-designer-toggle-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+  box-shadow: 2px 2px 0px rgba(60, 43, 37, 0.3);
+}
+
+.mochi-designer-toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0px rgba(60, 43, 37, 0.3);
+}
+
+/* X-Ray Tooltip */
+.mochi-xray-tooltip {
+  background: #3C2B25;
+  color: #FDF4E3;
+  border: 2px solid #E07A3F;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 11px;
+  z-index: 9999999 !important;
+  pointer-events: none;
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.3);
+  width: 220px;
+}
+
+.mochi-xray-tooltip-header {
+  border-bottom: 1px dashed rgba(253, 244, 227, 0.3);
+  padding-bottom: 6px;
+  margin-bottom: 6px;
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+}
+
+.mochi-xray-tag {
+  color: #E07A3F;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.mochi-xray-classes {
+  color: #8C7A6B;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mochi-xray-tooltip-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mochi-xray-stat {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mochi-xray-stat span {
+  color: #8C7A6B;
+  text-transform: uppercase;
+  font-size: 9px;
+}
+.mochi-typography-card {
+  background: #fff;
+  border: 1px solid #8C7A6B;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 2px 2px 0px rgba(140, 122, 107, 0.2);
+  transition: transform 0.1s;
+}
+
+.mochi-typography-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0px rgba(140, 122, 107, 0.2);
+}
+
+.mochi-typography-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.mochi-typography-tag {
+  background: #3C2B25;
+  color: #FDF4E3;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 11px;
+}
+
+.mochi-typography-font-name {
+  font-weight: 700;
+  font-size: 14px;
+  color: #E07A3F;
+  cursor: pointer;
+  position: relative;
+}
+
+.mochi-typography-sample {
+  padding: 12px;
+  background: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  word-wrap: break-word;
+}
+
+.mochi-typography-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.mochi-typography-spec {
+  display: flex;
+  flex-direction: column;
+  background: #FDF4E3;
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(140, 122, 107, 0.2);
+  cursor: pointer;
+  position: relative;
+}
+
+.mochi-typography-spec:hover {
+  background: #fff;
+  border-color: #E07A3F;
+}
+
+.mochi-spec-label {
+  font-size: 9px;
+  color: #8C7A6B;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.mochi-spec-value {
+  font-size: 11px;
+  font-weight: 700;
+  color: #3C2B25;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mochi-spec-color-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.mochi-copied-badge {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #698B43;
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  pointer-events: none;
+  animation: mochi-fade-up 0.2s ease-out;
+}
+
+.mochi-spec-copied {
+  position: absolute;
+  top: -10px;
+  right: -5px;
+  background: #698B43;
+  color: white;
+  font-size: 9px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  pointer-events: none;
+  animation: mochi-fade-up 0.2s ease-out;
+}
+
+@keyframes mochi-fade-up {
+  from { opacity: 0; transform: translate(-50%, 5px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}

@@ -1,0 +1,264 @@
+.mochi-sketcher-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(60, 43, 37, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Inter', system-ui, sans-serif;
+  animation: mochi-fade-in 0.2s ease-out;
+}
+
+@keyframes mochi-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.mochi-sketcher-modal {
+  background: #FDF1E6;
+  border: 4px solid #3C2B25;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 12px 12px 0px rgba(60, 43, 37, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 90vw;
+  height: 90vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.mochi-sketcher-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+  border-bottom: 2px dashed rgba(60, 43, 37, 0.2);
+  flex-shrink: 0;
+}
+
+.mochi-sketcher-header h3 {
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+  font-weight: 900;
+  color: #3C2B25;
+}
+
+.mochi-sketcher-close {
+  background: #E07A3F !important;
+  border: 2px solid #3C2B25 !important;
+  border-radius: 50% !important;
+  width: 24px !important;
+  height: 24px !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  color: #FFF3E3 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  box-shadow: 2px 2px 0px #3C2B25 !important;
+  transition: all 0.1s;
+}
+
+.mochi-sketcher-close:hover {
+  background: #C25A24 !important;
+}
+
+.mochi-sketcher-close:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px #3C2B25 !important;
+}
+
+
+.mochi-sketcher-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #FFF3E3;
+  border: 3px solid #3C2B25;
+  border-radius: 12px;
+  padding: 8px 16px;
+  flex-shrink: 0;
+  box-shadow: 4px 4px 0px rgba(60, 43, 37, 0.1);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.mochi-sketcher-colors {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.mochi-color-swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #3C2B25;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.mochi-color-swatch.active {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 2px #FDF1E6, 0 0 0 4px #3C2B25;
+}
+
+.mochi-sketcher-tools {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  background: #FDF1E6;
+  padding: 4px;
+  border-radius: 8px;
+  border: 2px solid rgba(60, 43, 37, 0.2);
+}
+
+.mochi-tool-btn, .mochi-eraser-btn {
+  background: transparent;
+  border: 2px dashed transparent;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  color: #3C2B25;
+  cursor: pointer;
+}
+
+.mochi-tool-btn.active, .mochi-eraser-btn.active {
+  background: #3C2B25;
+  color: #FFF3E3;
+}
+
+.mochi-eraser-btn {
+  border-color: #3C2B25;
+}
+
+.mochi-sketcher-sizes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mochi-size-slider {
+  -webkit-appearance: none;
+  width: 100px;
+  background: transparent;
+}
+.mochi-size-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #E07A3F;
+  border: 2px solid #3C2B25;
+  cursor: pointer;
+  margin-top: -6px;
+}
+.mochi-size-slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  background: #3C2B25;
+  border-radius: 2px;
+}
+
+.mochi-sketcher-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.mochi-sketcher-btn {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.mochi-sketcher-btn.outline {
+  background: transparent;
+  border: 2px solid #3C2B25;
+  color: #3C2B25;
+}
+.mochi-sketcher-btn.outline:active {
+  background: #3C2B25;
+  color: #FFF3E3;
+}
+
+.mochi-sketcher-btn.primary {
+  background: #E07A3F;
+  border: 2px solid #3C2B25;
+  color: #FFF3E3;
+  box-shadow: 2px 2px 0px #3C2B25;
+}
+.mochi-sketcher-btn.primary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px #3C2B25;
+}
+
+.mochi-sketcher-canvas-container {
+  flex: 1 1 0%;
+  min-height: 0;
+  min-width: 0;
+  border: 3px solid #3C2B25;
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mochi-sketcher-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Let events pass to canvas */
+  z-index: 1;
+}
+
+.mochi-sketcher-canvas-wrapper {
+  /* wrapper sizes itself to canvas */
+  max-width: 100%;
+  max-height: 100%;
+  display: inline-flex; /* Shrink-wrap around canvas */
+}
+
+.mochi-sketcher-canvas {
+  /* No longer absolute! Sizes the wrapper naturally */
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  display: block;
+  z-index: 2;
+  cursor: crosshair;
+}
+
+.mochi-sketcher-text-input {
+  position: absolute;
+  z-index: 20;
+  background: transparent;
+  border: 2px dashed #E07A3F;
+  outline: none;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  padding: 4px;
+  margin: 0;
+  min-width: 100px;
+  min-height: 40px;
+  resize: both;
+}
