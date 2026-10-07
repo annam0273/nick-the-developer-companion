@@ -1,3 +1,4 @@
+---
 name: Bug report
 about: Create a report to help us improve Nick
 title: "[BUG] "
@@ -29,3 +30,4 @@ If applicable, add screenshots or a screen recording to help explain your proble
 
 **Additional context**
 Add any other context about the problem here.
+
