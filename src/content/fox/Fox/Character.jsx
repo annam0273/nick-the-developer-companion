@@ -120,8 +120,9 @@ export default function Character({ movementState }) {
   const { isListening, transcript, error, voiceFeedback, startListening, stopListening } = useVoiceCommand(handleMenuAction);
   const isListeningRef = useRef(isListening);
   
+  isListeningRef.current = isListening;
+  
   React.useEffect(() => {
-    isListeningRef.current = isListening;
     if (isListening) {
       // If peeking, return to comfortable position immediately
       if (movementStateRef.current.mode === 'peeking') {

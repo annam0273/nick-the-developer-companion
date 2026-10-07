@@ -52,7 +52,7 @@ export function useTypographer(isActive) {
                 customFontFamilies.add(f.split(':')[0].replace(/\+/g, ' '));
               });
             }
-          } catch(e) {}
+          } catch {}
         }
       });
 
@@ -66,7 +66,7 @@ export function useTypographer(isActive) {
             }
           });
         }
-      } catch (e) {}
+      } catch {}
 
       setFonts({ tags: analyzedFonts, external: Array.from(customFontFamilies) });
     } catch (e) {

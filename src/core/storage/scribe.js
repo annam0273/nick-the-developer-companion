@@ -6,7 +6,7 @@ export async function getNotebooks() {
   try {
     const data = await browserAPI.storage.local.get([SCRIBE_KEY]);
     return data[SCRIBE_KEY] || { global: '' };
-  } catch (e) {
+  } catch {
     const local = localStorage.getItem(SCRIBE_KEY);
     return local ? JSON.parse(local) : { global: '' };
   }
@@ -15,7 +15,7 @@ export async function getNotebooks() {
 export async function saveNotebooks(notebooks) {
   try {
     await browserAPI.storage.local.set({ [SCRIBE_KEY]: notebooks });
-  } catch (e) {
+  } catch {
     localStorage.setItem(SCRIBE_KEY, JSON.stringify(notebooks));
   }
 }
