@@ -9,8 +9,8 @@
   z-index: 2147483647;
   cursor: grab;
   user-select: none;
-  padding-right: 10px;
-  padding-bottom: 10px;
+  padding-right: 20px;
+  padding-bottom: 15px; /* Reduced from 30px to bring the character slightly down */
 }
 
 .mochi-fox-corner.mochi-dragging {

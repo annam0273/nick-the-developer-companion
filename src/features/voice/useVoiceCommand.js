@@ -64,9 +64,11 @@ export function useVoiceCommand(onCommand) {
   const [isListening, setIsListening] = useState(false);
   const [transcript, setTranscript] = useState('');
   const [error, setError] = useState(null);
+  const [voiceFeedback, setVoiceFeedback] = useState(null);
   
   const recognitionRef = useRef(null);
   const isListeningRef = useRef(false);
+  const commandExecutedRef = useRef(false);
 
   const stopListening = useCallback(() => {
     isListeningRef.current = false;
@@ -76,6 +78,13 @@ export function useVoiceCommand(onCommand) {
         recognitionRef.current.stop();
       } catch (e) {}
     }
+    
+    // If we stopped listening and no command was triggered, give feedback
+    if (!commandExecutedRef.current) {
+      setVoiceFeedback("Can you repeat again?");
+      setTimeout(() => setVoiceFeedback(null), 2500);
+    }
+    
     setTimeout(() => setTranscript(''), 2000);
   }, []);
 
@@ -86,9 +95,11 @@ export function useVoiceCommand(onCommand) {
     }
 
     setError(null);
+    setVoiceFeedback(null);
     setTranscript('');
     setIsListening(true);
     isListeningRef.current = true;
+    commandExecutedRef.current = false;
 
     if (recognitionRef.current) {
       try {
@@ -154,6 +165,7 @@ export function useVoiceCommand(onCommand) {
       }
 
       if (commandExecuted) {
+        commandExecutedRef.current = true;
         // We must stop the recognition to clear the accumulated transcript 
         // so it doesn't instantly re-trigger the same command on the next word.
         // The onend handler will automatically restart it because isListeningRef is still true!
@@ -205,5 +217,5 @@ export function useVoiceCommand(onCommand) {
     };
   }, []);
 
-  return { isListening, transcript, error, startListening, stopListening };
+  return { isListening, transcript, error, voiceFeedback, startListening, stopListening };
 }

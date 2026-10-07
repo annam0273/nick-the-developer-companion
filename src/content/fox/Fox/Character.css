@@ -198,8 +198,9 @@
 
 .mochi-comic-cloud-wrapper {
   position: absolute;
-  top: -60px;
-  right: 100px; /* Perfect sweet spot between distant and overlapping */
+  bottom: 130px; /* Push it further up so it doesn't overlap the character */
+  right: 140px; /* Push it further left to ensure no overlap */
+  width: max-content; /* CRITICAL: Allows the cloud to grow horizontally instead of collapsing vertically */
   pointer-events: none;
   z-index: 10;
   animation: mochi-pop-in 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
@@ -216,12 +217,14 @@
 .mochi-comic-cloud-base {
   position: relative;
   background: white;
-  border-radius: 20px;
-  padding: 10px 15px;
+  border-radius: 30px; /* Rounder base */
+  padding: 24px 30px; /* Increased padding to prevent feeling congested */
   min-width: 40px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 100%; /* Stretch to fill wrapper so tail doesn't detach on fixed width wrappers */
+  box-sizing: border-box; /* Keep padding internal */
 }
 
 .mochi-speech-content {
@@ -231,8 +234,9 @@
   font-size: 14px;
   font-weight: bold;
   color: #333;
-  text-align: center;
+  text-align: justify; /* Aligned and justified as needed */
   white-space: pre-wrap;
+  line-height: 1.4;
 }
 
 /* Add fluffy cloud bumps around the perimeter */
@@ -243,12 +247,24 @@
   z-index: -1;
 }
 
-.bump1 { width: 30px; height: 30px; top: -10px; left: 10px; }
-.bump2 { width: 45px; height: 45px; top: -20px; left: calc(50% - 22px); }
-.bump3 { width: 35px; height: 35px; top: -15px; right: 10px; }
-.bump4 { width: 25px; height: 25px; bottom: -10px; left: 10px; }
-.bump5 { width: 35px; height: 35px; bottom: -15px; right: calc(50% - 17px); }
-.bump6 { width: 25px; height: 25px; bottom: -8px; right: 10px; }
+/* Fully responsive positioning: corners are fixed circles, edges are stretching ellipses */
+/* Corner Bumps */
+.bump1 { width: 40px; height: 40px; top: -15px; left: -10px; }
+.bump2 { width: 45px; height: 45px; top: -20px; right: -10px; }
+.bump3 { width: 40px; height: 40px; bottom: -15px; left: -10px; }
+.bump4 { width: 35px; height: 35px; bottom: -10px; right: -5px; }
+
+/* Edge Bumps (Stretch with the width/height of the text) */
+.bump5 { width: 70%; height: 40px; top: -20px; left: 50%; transform: translateX(-50%); border-radius: 50%; } /* Top */
+.bump6 { width: 80%; height: 45px; bottom: -20px; left: 50%; transform: translateX(-50%); border-radius: 50%; } /* Bottom */
+.bump7 { height: 70%; width: 40px; top: 50%; left: -20px; transform: translateY(-50%); border-radius: 50%; } /* Left */
+.bump8 { height: 80%; width: 45px; top: 50%; right: -20px; transform: translateY(-50%); border-radius: 50%; } /* Right */
+
+/* Filler Bumps for variation */
+.bump9 { width: 50px; height: 50px; top: -25px; left: 25%; }
+.bump10 { width: 45px; height: 45px; bottom: -22px; right: 25%; }
+.bump11 { height: 50px; width: 50px; top: 25%; left: -25px; }
+.bump12 { height: 45px; width: 45px; bottom: 25%; right: -22px; }
 
 /* The little circles connecting the thought cloud to the fox */
 .mochi-cloud-tail1 {
@@ -279,12 +295,12 @@
 
 .mochi-listening-bubble {
   color: #118AB2;
-  white-space: nowrap;
+  white-space: pre-wrap;
+  width: 220px; /* Fixed width stops text characters from jumping down/up */
+  max-width: 220px; 
   pointer-events: auto; /* allow clicking to stop */
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 4px;
+  display: block; /* Removed flex to allow normal wrapping */
   filter: 
     drop-shadow(2px 0px 0px #118AB2) 
     drop-shadow(-2px 0px 0px #118AB2) 
@@ -305,14 +321,17 @@
 .mochi-companion-bubble {
   color: #E07A3F;
   white-space: pre-wrap;
-  max-width: 150px;
-  text-align: center;
+  max-width: 280px; /* Reduced width to force wrapping sooner */
   filter: 
     drop-shadow(2px 0px 0px #E07A3F) 
     drop-shadow(-2px 0px 0px #E07A3F) 
     drop-shadow(0px 2px 0px #E07A3F) 
     drop-shadow(0px -2px 0px #E07A3F)
     drop-shadow(4px 4px 0px rgba(224,122,63,0.15));
+}
+
+.mochi-companion-bubble .mochi-speech-content {
+  text-align: center; /* Short messages look better centered */
 }
 
 .mochi-error-bubble {

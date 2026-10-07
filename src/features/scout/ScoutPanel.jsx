@@ -8,6 +8,7 @@ export default function ScoutPanel({ onClose }) {
   const [activeTab, setActiveTab] = useState('preview');
   const [copied, setCopied] = useState('');
   const [isDocked, setIsDocked] = useState(false);
+  const [showInfo, setShowInfo] = useState(false);
 
   useEffect(() => {
     try {
@@ -63,7 +64,16 @@ export default function ScoutPanel({ onClose }) {
   const panelContent = (
     <div className={`mochi-scout-panel ${isDocked ? 'docked' : ''}`} onClick={(e) => e.stopPropagation()} onPointerDown={(e) => e.stopPropagation()}>
       <div className="mochi-scout-header">
-        <h3>SEO Scout</h3>
+        <div style={{display: 'flex', gap: '6px', alignItems: 'center'}}>
+          <h3>SEO Scout</h3>
+          <button 
+            className="mochi-scout-info-btn"
+            onClick={(e) => { e.stopPropagation(); setShowInfo(!showInfo); }}
+            title="What is this?"
+          >
+            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          </button>
+        </div>
         <div style={{display: 'flex', gap: '8px', alignItems: 'center'}}>
           <button 
             className="mochi-scout-close" 
@@ -98,6 +108,15 @@ export default function ScoutPanel({ onClose }) {
       </div>
 
       <div className="mochi-scout-content">
+        {showInfo && (
+          <div className="mochi-scout-info-box">
+            <strong>Heads up!</strong> Scout isn't meant to give you a traditional SEO "score" or tell you how to rank on Google.
+            <br/><br/>
+            It is just a structural <em>"quick glance"</em> for developers to instantly verify things like:<br/>
+            <span style={{opacity: 0.8}}>"Did I forget the meta description? Did I accidentally use two &lt;h1&gt; tags? Are my open graph tags injected properly?"</span>
+          </div>
+        )}
+
         {activeTab === 'preview' && (
           <>
             <h4 className="mochi-scout-section-title">Social Card</h4>

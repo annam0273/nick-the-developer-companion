@@ -100,6 +100,22 @@ body.scout-docked-active #focus-companion-root {
   box-shadow: 0px 0px 0px #3C2B25 !important;
 }
 
+.mochi-scout-info-btn {
+  background: transparent !important;
+  border: none !important;
+  color: #8C7A6B !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s;
+}
+
+.mochi-scout-info-btn:hover {
+  color: #118AB2 !important;
+}
+
 .mochi-scout-tabs {
   display: flex;
   justify-content: space-between;
@@ -145,6 +161,24 @@ body.scout-docked-active #focus-companion-root {
   flex: 1;
   height: 100%;
   min-height: 0;
+}
+
+.mochi-scout-info-box {
+  background: #118AB2 !important;
+  color: #FFF3E3 !important;
+  border: 2px solid #3C2B25 !important;
+  border-radius: 8px !important;
+  padding: 12px 14px !important;
+  margin-bottom: 16px !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  box-shadow: 2px 2px 0px #3C2B25 !important;
+  animation: mochi-info-pop 0.2s ease-out;
+}
+
+@keyframes mochi-info-pop {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 .mochi-scout-content::-webkit-scrollbar {
