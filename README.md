@@ -1,7 +1,25 @@
-# 🦊 Nick - The Developer Companion
+<div align="center">
+  <img src="docs/assets/banner.jpg" alt="Nick The Developer Companion Banner" />
 
-A beautifully animated, fully autonomous 2D SVG companion built as a Chrome Extension (Manifest V3) specifically for web developers. Nick hangs out in the corner of your screen, peeks out while you work, falls asleep when you're inactive, and comes packed with powerful offline web development tools.
+  # 🦊 Nick - The Developer Companion
 
+  <p align="center">
+    <img src="https://img.shields.io/badge/React-18-blue?style=for-the-badge&logo=react" alt="React" />
+    <img src="https://img.shields.io/badge/Vite-8-purple?style=for-the-badge&logo=vite" alt="Vite" />
+    <img src="https://img.shields.io/badge/Chrome-Manifest_V3-green?style=for-the-badge&logo=googlechrome" alt="Manifest V3" />
+    <img src="https://img.shields.io/badge/WebAssembly-Offline_Compression-orange?style=for-the-badge&logo=webassembly" alt="WASM" />
+  </p>
+  
+  <p><b>A beautifully animated, fully autonomous 2D SVG companion built as a Chrome Extension (Manifest V3) specifically for web developers.</b></p>
+  <p>Nick hangs out in the corner of your screen, peeks out while you work, falls asleep when you're inactive, and comes packed with powerful offline web development tools.</p>
+</div>
+
+---
+
+## 🎥 See it in Action
+> **[TODO: Upload a GIF or Video here by dragging and dropping it into the GitHub editor!]**
+
+---
 ## ✨ Features
 
 - 🦊 **Autonomous Animation System**: Nick wanders, peeks, and sleeps autonomously. Built using a highly optimized CSS transition state-machine that safely handles browser background-tab throttling via `requestAnimationFrame` chaining.
