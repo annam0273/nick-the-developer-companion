@@ -19,11 +19,19 @@
 ## 📸 Screenshots
 
 <p align="center">
-  <b>[TODO: Drag and drop a screenshot of the SEO Scout here]</b>
+  <b>[TODO 1: Drag and drop your FIRST screenshot here]</b>
 </p>
 
 <p align="center">
-  <b>[TODO: Drag and drop a screenshot of The Forager here]</b>
+  <b>[TODO 2: Drag and drop your SECOND screenshot here]</b>
+</p>
+
+<p align="center">
+  <b>[TODO 3: Drag and drop your THIRD screenshot here]</b>
+</p>
+
+<p align="center">
+  <b>[TODO 4: Drag and drop your FOURTH screenshot here]</b>
 </p>
 
 ---
