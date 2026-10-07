@@ -12,7 +12,6 @@ export function useForager(isActive) {
     const timer = setTimeout(() => {
       const colors = new Set();
       const svgs = [];
-      const frameworks = [];
 
       try {
         // 1. Gather colors

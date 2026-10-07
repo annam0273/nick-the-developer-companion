@@ -171,7 +171,7 @@ export function useVoiceCommand(onCommand) {
         // The onend handler will automatically restart it because isListeningRef is still true!
         try {
           recognition.stop();
-        } catch (e) {}
+        } catch {}
         setTimeout(() => setTranscript(''), 1000);
       }
     };
@@ -192,7 +192,7 @@ export function useVoiceCommand(onCommand) {
       if (isListeningRef.current) {
         try {
           recognition.start();
-        } catch (e) {}
+        } catch {}
       } else {
         setIsListening(false);
       }
@@ -212,7 +212,7 @@ export function useVoiceCommand(onCommand) {
       if (recognitionRef.current) {
         try {
           recognitionRef.current.stop();
-        } catch (e) {}
+        } catch {}
       }
     };
   }, []);
