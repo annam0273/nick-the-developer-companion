@@ -19,19 +19,23 @@
 ## 📸 Screenshots
 
 <p align="center">
-  <b>[TODO 1: Drag and drop your FIRST screenshot here]</b>
+  <img width="1917" height="1011" alt="Screenshot 2026-10-07 160827" src="https://github.com/user-attachments/assets/fcbf5c0e-0aff-4daa-aa05-d85db2e08ef5" />
 </p>
 
 <p align="center">
-  <b>[TODO 2: Drag and drop your SECOND screenshot here]</b>
+ <img width="1917" height="1016" alt="Screenshot 2026-10-07 162312" src="https://github.com/user-attachments/assets/abe52382-3090-45e1-85a4-307a3dada85b" />
 </p>
 
 <p align="center">
-  <b>[TODO 3: Drag and drop your THIRD screenshot here]</b>
+  <img width="1917" height="1015" alt="Screenshot 2026-10-07 162510" src="https://github.com/user-attachments/assets/e429de17-98c6-4b17-8c67-27d476c1f22a" />
 </p>
 
 <p align="center">
-  <b>[TODO 4: Drag and drop your FOURTH screenshot here]</b>
+  <img width="1917" height="1015" alt="Screenshot 2026-10-07 162510" src="https://github.com/user-attachments/assets/a6349a3b-2f52-41a3-b53b-38aaea6962b6" />
+</p>
+
+<p align="center">
+  <img width="1917" height="1015" alt="Screenshot 2026-10-07 162510" src="https://github.com/user-attachments/assets/9d985f9b-9d5e-4cae-9c42-1054db05bc50" />
 </p>
 
 ---
