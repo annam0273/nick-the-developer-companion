@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Mochi Developer Companion",
+  "name": "Nick - The developer companion",
   "version": "1.0",
   "description": "A fully autonomous 2D SVG character companion for web developers.",
   "permissions": ["contextMenus", "storage", "offscreen", "activeTab"],

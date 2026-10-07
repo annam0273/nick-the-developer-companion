@@ -21,6 +21,12 @@ const SpeechCloud = ({ className = '', onClick, children }) => (
       <div className="mochi-cloud-bump bump4" />
       <div className="mochi-cloud-bump bump5" />
       <div className="mochi-cloud-bump bump6" />
+      <div className="mochi-cloud-bump bump7" />
+      <div className="mochi-cloud-bump bump8" />
+      <div className="mochi-cloud-bump bump9" />
+      <div className="mochi-cloud-bump bump10" />
+      <div className="mochi-cloud-bump bump11" />
+      <div className="mochi-cloud-bump bump12" />
       <div className="mochi-speech-content">{children}</div>
     </div>
     <div className="mochi-cloud-tail1" />
@@ -111,7 +117,7 @@ export default function Character({ movementState }) {
     }
   };
 
-  const { isListening, transcript, error, startListening, stopListening } = useVoiceCommand(handleMenuAction);
+  const { isListening, transcript, error, voiceFeedback, startListening, stopListening } = useVoiceCommand(handleMenuAction);
   const isListeningRef = useRef(isListening);
   
   React.useEffect(() => {
@@ -372,13 +378,14 @@ export default function Character({ movementState }) {
         pointerEvents: isTakingScreenshot ? 'none' : 'auto'
       }}
     >
-      {companionMessage && !isListening && !error && <SpeechCloud className="mochi-companion-bubble">{companionMessage}</SpeechCloud>}
-      {isHappy && !companionMessage && !isListening && !error && <SpeechCloud>Hi!</SpeechCloud>}
-      {isSleeping && !companionMessage && !isListening && !error && <SpeechCloud className="mochi-sleep-bubble">Zzz...</SpeechCloud>}
+      {voiceFeedback && !isListening && !error && <SpeechCloud className="mochi-companion-bubble">{voiceFeedback}</SpeechCloud>}
+      {companionMessage && !isListening && !error && !voiceFeedback && <SpeechCloud className="mochi-companion-bubble">{companionMessage}</SpeechCloud>}
+      {isHappy && !companionMessage && !isListening && !error && !voiceFeedback && <SpeechCloud>Hi!</SpeechCloud>}
+      {isSleeping && !companionMessage && !isListening && !error && !voiceFeedback && <SpeechCloud className="mochi-sleep-bubble">Zzz...</SpeechCloud>}
       {error && <SpeechCloud className="mochi-error-bubble">{error}</SpeechCloud>}
       {isListening && (
         <SpeechCloud className="mochi-listening-bubble" onClick={(e) => { e.stopPropagation(); stopListening(); }}>
-          <span className="mochi-mic-icon">🎙️</span> {transcript || "Listening..."}
+          {transcript || "Tell me what to do..."}
         </SpeechCloud>
       )}
 
