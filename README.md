@@ -16,8 +16,15 @@
 
 ---
 
-## 🎥 See it in Action
-> **[TODO: Upload a GIF or Video here by dragging and dropping it into the GitHub editor!]**
+## 📸 Screenshots
+
+<p align="center">
+  <b>[TODO: Drag and drop a screenshot of the SEO Scout here]</b>
+</p>
+
+<p align="center">
+  <b>[TODO: Drag and drop a screenshot of The Forager here]</b>
+</p>
 
 ---
 ## ✨ Features
