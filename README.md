@@ -26,8 +26,8 @@ Because this is a developer prototype, it is not listed on the Chrome Web Store.
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/mochi-browser-companion.git
-cd mochi-browser-companion
+git clone https://github.com/annam0273/nick-the-developer-companion.git
+cd nick-the-developer-companion
 ```
 
 ### 2. Install Dependencies
